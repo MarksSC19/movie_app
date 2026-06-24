@@ -6,6 +6,9 @@ class Movie {
   final String? backdropPath;
   final double voteAverage;
   final String releaseDate;
+  final double popularity;
+  final String originalLanguage;
+  final int voteCount;
 
   Movie({
     required this.id,
@@ -15,6 +18,9 @@ class Movie {
     this.backdropPath,
     required this.voteAverage,
     required this.releaseDate,
+    required this.popularity,
+    required this.originalLanguage,
+    required this.voteCount,
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) {
@@ -26,6 +32,9 @@ class Movie {
       backdropPath: json['backdrop_path'],
       voteAverage: (json['vote_average'] as num?)?.toDouble() ?? 0.0,
       releaseDate: json['release_date'] ?? 'Desconocida',
+      popularity: (json['popularity'] as num?)?.toDouble() ?? 0.0,
+      originalLanguage: json['original_language']?.toString().toUpperCase() ?? 'ES',
+      voteCount: json['vote_count'] ?? 0,
     );
   }
 
