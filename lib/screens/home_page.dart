@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'api_services.dart';
-import 'item_movie_list_widget.dart';
-import 'movie_models.dart';
+import '../services/api_services.dart';
+import '../widgets/item_movie_list_widget.dart';
+import '../models/movie_models.dart';
+import 'detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -99,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => _DetailScreen(movie: movie),
+                            builder: (context) => DetailPage(movie: movie),
                           ),
                         );
                       },
@@ -110,42 +111,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _DetailScreen extends StatelessWidget {
-  final Movie movie;
-  const _DetailScreen({required this.movie});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF0F1016),
-      appBar: AppBar(
-        title: Text(movie.title),
-        backgroundColor: const Color(0xFF0F1016),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Image.network(movie.posterUrl, height: 400, fit: BoxFit.cover),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(movie.title, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white)),
-                  const SizedBox(height: 8),
-                  Text('Calificación: ${movie.voteAverage}/10', style: const TextStyle(color: Colors.amber, fontSize: 16)),
-                  const SizedBox(height: 16),
-                  Text(movie.overview, style: const TextStyle(color: Colors.white70, fontSize: 16)),
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

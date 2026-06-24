@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'constants.dart';
-import 'movie_models.dart';
+import '../core/constants.dart';
+import '../models/movie_models.dart';
 
 class ApiServices {
   // Obtener películas populares
