@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../models/movie_models.dart';
+import '../widgets/title_description_widget.dart';
 
 class DetailPage extends StatelessWidget {
   final Movie movie;
@@ -150,29 +151,11 @@ class DetailPage extends StatelessWidget {
               offset: const Offset(0, -40),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Sinopsis',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      movie.overview.isEmpty
-                          ? 'Sin sinopsis disponible.'
-                          : movie.overview,
-                      style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.75),
-                        fontSize: 15,
-                        height: 1.6,
-                      ),
-                    ),
-                  ],
+                child: TitleDescriptionWidget(
+                  title: 'Sinopsis',
+                  description: movie.overview.isEmpty
+                      ? 'Sin sinopsis disponible.'
+                      : movie.overview,
                 ),
               ),
             ),
